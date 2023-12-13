@@ -1,0 +1,69 @@
+\documentclass[a4j,12pt]{ltjsreport}
+
+\title{タイトル}
+\author{著者}
+
+\usepackage{url}
+\usepackage{color}
+\usepackage{listings, jvlisting}
+\lstset{
+    frame={tb}
+}
+\lstnewenvironment{source}[1][]
+    {
+        \renewcommand{\lstlistingname}{ソースコード}
+        \lstset{#1}
+    }
+    {}
+\lstnewenvironment{result}[1][]
+    {
+        \renewcommand{\lstlistingname}{実行結果}
+        \lstset{#1}
+    }
+    {}
+\newcommand{\sourceref}[1]{ソースコード\ref{#1}}
+\newcommand{\resultref}[1]{実行結果\ref{#1}}
+
+\usepackage{graphicx}
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+
+\begin{document}
+\maketitle
+
+\pagenumbering{roman}
+
+\begin{abstract}
+概要
+\end{abstract}
+
+\tableofcontents
+\pagebreak
+\pagenumbering{arabic}
+\pagebreak
+
+\chapter{はじめに}\label{chap:intro}
+\section{例}
+\todo{ここから書く}
+図\ref{fig:figure}参照
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=120mm]{assets/figure.png}
+    \caption{図}
+    \label{fig:figure}
+\end{figure}
+
+\begin{source}[label=src:source,caption={ソースコード}]
+fn main() {
+}
+\end{source}
+
+\sourceref{src:source}参照
+
+\chapter*{謝辞}
+\addcontentsline{toc}{chapter}{謝辞}
+謝辞等
+
+\bibliography{main}
+\bibliographystyle{junsrt}
+\end{document}
